@@ -5,6 +5,7 @@ const app = express();
 
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
+const homeRoutes = require("./routes/home");
 const errorController = require("./controllers/errors");
 
 app.set("view engine", "ejs");
@@ -15,6 +16,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
+app.use(homeRoutes);
 //create a server object:
 
 app.use(errorController.get404);
