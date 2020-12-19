@@ -5,6 +5,27 @@
 <body>
 <%- include('../includes/navigation.ejs') %>
     <main>
-        <h1>Start Seite</h1>
+        <div class="grid">
+        <% if (prods.length > 0) { %>
+            <% for(book of prods) {%>
+            <article class="card product-item">
+                <header class="card__header">
+                    <h1 class="product__title"><%= book.title %></h1>
+                </header>
+                <div class="card__image">
+                    <img src="<%= book.imageUrl %>" alt="A Book">
+                </div>
+                <div class="card__content">
+                    <h2 class="product__price">Fr. <%= book.price %></h2>
+                    <p class="product__description"><%= book.description %></p>
+                </div>
+                <div class="card__actions">
+                    <button class="btn">Zum Warenkorb</button>
+                </div>
+            </article>
+            <% } } else { %>
+                <h1>Keine Produkte gefunden!</h1>
+                <% } %>
+            </div>
     </main>
 <%- include('../includes/end.ejs') %>
