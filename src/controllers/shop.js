@@ -64,11 +64,13 @@ exports.getCart = (req, res, next) => {
       res.render('shop/cart', {
         path: '/cart',
         pageTitle: 'Your Cart',
-        products: cartProducts
+        products: cartProducts,
+        totalPrice: cart.totalPrice
       });
     });
   });
 };
+
 exports.postCart = (req, res, next) => {
   const prodId = req.body.productId
   Product.findById(prodId, prod => {
@@ -83,6 +85,7 @@ exports.postCartDeleteProduct = (req, res, next) => {
     res.redirect('/cart');
   });
 };
+
 exports.getOrders = (req, res, next) => {
   const prodId = req.params.productId;
   Product.findById(prodId, prod => {

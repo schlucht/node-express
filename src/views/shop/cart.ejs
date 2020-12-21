@@ -5,7 +5,21 @@
 <body>
 <%- include('../includes/navigation.ejs') %>
     <main>
-        mycart
+        <% if (products) { %>
+            <h1><%= totalPrice %></h1>
+            <% console.log(products); for(let cart of products) { %>
+                <h3><%=cart.productData.title %></h3>
+                <p><%= cart.qty %></p>
+                <p><b>Total: </b><%= cart.productData.price * cart.qty %></p>
+                <form action="/cart-delete-item" method="POST">
+                    <button class="btn" type="submit">Delete</button>
+                    <input type="hidden" name="productId" 
+                    value="<%= cart.productData.id %>" >
+                </form>
+            <% } %>
+        <% } else { %>
+            <h3>Keine Produkte vorhanden</h3>
+        <% } %>
     </main>
 <%- include('../includes/end.ejs') %>
     

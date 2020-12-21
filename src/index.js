@@ -3,10 +3,14 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const app = express();
 
+
+
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 const homeRoutes = require("./routes/home");
 const errorController = require("./controllers/errors");
+
+
 
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
